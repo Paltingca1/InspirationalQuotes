@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspirational Quotes</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+    <div class="body">
+        <div class="header">
+            <img src="./img/AC_Logo_Vert.png" height="85px" alt="">
+            <h1>Inspirational Quotes</h1>
+        </div>
+        <div class="content">
+            <h3 id="person"></h3>
+            <p id="quote"></p>
+            
+
+            <h3 id="person1"></h3>
+            <p id="quote1"></p>
+            
+
+            <h3 id="person2"></h3>
+            <p id="quote2"></p>
+
+            <h3 id="person3"></h3>
+            <p id="quote3"></p>
+           
+        </div>
+        
+        
+    </div>
+    <script>
+        $(document).ready(function() {  
+            var url = 'https://www.brainyquote.com/link/quotebr.rss'; 
+            $.ajax({  
+                type: 'GET',  
+                url: "https://api.rss2json.com/v1/api.json?rss_url=" + url, 
+                dataType: 'jsonp', 
+                success: function(data) {  
+                    $("#person").text(data.items[0].title);
+                    $("#quote").text(data.items[0].description);
+
+                    $("#person1").text(data.items[1].title);
+                    $("#quote1").text(data.items[1].description);
+
+                    $("#person2").text(data.items[2].title);
+                    $("#quote2").text(data.items[2].description);
+
+                    $("#person3").text(data.items[3].title);
+                    $("#quote3").text(data.items[3].description);
+                    
+                }  
+            });  
+        }); 
+    </script>
+</body>
+</html>
